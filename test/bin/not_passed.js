@@ -22,11 +22,9 @@ plzPort().then((port) => {
     console.log(proc.pid)
     proc.kill();
 
-    /*
     setTimeout(() => {
       process.exit(0);
     }, 1000);
-    */
   }, 1000);
 });
 
