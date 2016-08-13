@@ -8,7 +8,11 @@ plzPort().then((port) => {
   const proc = cp.exec(`node ${process.cwd()}/bin/agreed-server.js --port ${port} --path ${not_pass}`);
 
   proc.on('error', err => {
+    console.log('on error')
     console.log(err.stack)
+  })
+  proc.on('exit', err => {
+    console.log('on exit')
   })
   setTimeout(() => {
     const result = cp.execSync(`node ${process.cwd()}/bin/agreed-client.js --port ${port} --path ${pass}`).toString();
@@ -18,9 +22,11 @@ plzPort().then((port) => {
     console.log(proc.pid)
     proc.kill();
 
+    /*
     setTimeout(() => {
       process.exit(0);
     }, 1000);
+    */
   }, 1000);
 });
 
