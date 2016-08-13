@@ -11,9 +11,12 @@ plzPort().then((port) => {
 
     console.log(result);
     assert(result.indexOf('✗ fail') >= 0);
+    console.log(proc.pid)
     proc.kill();
 
-    process.exit(0);
+    setTimeout(() => {
+      process.exit(0);
+    }, 1000);
   }, 1000);
 });
 
